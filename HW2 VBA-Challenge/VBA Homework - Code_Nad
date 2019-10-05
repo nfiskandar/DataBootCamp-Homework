@@ -1,0 +1,152 @@
+Sub VBAStock()
+
+'Loop through all sheets
+For Each ws In Worksheets
+
+    'Dim ws As Worksheet
+    'Set ws = ActiveSheet
+    
+    '------------------------------------------------------------------------------------
+    'Part 1: Create Summary List of Ticker, Change, Percent Change and Total Stock Volume
+    '------------------------------------------------------------------------------------
+    
+    'Inititalize Variables
+    Dim LastRowData As Long, LastRowTicker As Long
+    Dim i, j, k As Long
+    Dim intTextCompare As Integer
+    Dim FirstOpen As Double, TotalVolume As Double
+   
+    'Add Column Title for Results
+    ws.Range("I1") = "Ticker"
+    ws.Range("J1") = "Yearly Change"
+    ws.Range("K1") = "Percent Change"
+    ws.Range("L1") = "Total Stock Volume"
+   
+    'Set Particular Format for Percent Change
+    ws.Columns("K").Style = "Percent"
+    ws.Columns("K").NumberFormat = "0.00%"
+    
+    'Determine Last row that contains data in Columnn A
+    LastRowData = Range("A" & Rows.Count).End(xlUp).Row
+ 
+    'Initialize helpful variables for Results
+    j = 2
+    k = 2
+    
+    'Loop for each entry in column A
+    For i = 2 To 50000
+
+        'Comparing TickerValue with Next Row
+        intTextCompare = StrComp(ws.Range("A" & i).Value, ws.Range("A" & i + 1).Value, vbTextCompare)
+       
+        'If the same, get first Open and Calculate totalvolume
+        If intTextCompare = 0 Then
+                    
+           'Save First Open Value and Initialize Total Volume
+            If k = 2 Then
+                TotalVolume = ws.Range("G" & i).Value
+                FirstOpen = ws.Range("C" & i).Value
+                k = k + 1
+            End If
+        TotalVolume = TotalVolume + ws.Range("G" & i + 1).Value
+        
+        Else
+ 
+        'If next ticker is different, display Summary of that Ticker
+            'Display Ticker, Change
+            ws.Range("I" & j).Value = ws.Range("A" & i).Value
+            ws.Range("J" & j).Value = ws.Range("F" & i).Value - FirstOpen
+          
+            'Conditional Format Change based on negative positive value
+            If ws.Range("J" & j).Value > 0 Then
+                ws.Range("J" & j).Interior.ColorIndex = 4
+            ElseIf ws.Range("J" & j).Value < 0 Then
+                ws.Range("J" & j).Interior.ColorIndex = 3
+            Else
+                ws.Range("J" & j).Interior.ColorIndex = 2
+            End If
+                       
+            'Display Percent Change and Total Volume and makesure not divided by 0
+            If FirstOpen <> 0 Then
+                ws.Range("K" & j).Value = (FirstOpen - ws.Range("F" & i).Value) / FirstOpen
+            Else
+                ws.Range("K" & j).Value = 0
+            End If
+            
+            'Displaying Total Volume
+            ws.Range("L" & j).Value = TotalVolume
+
+            'Reset values for next ticker
+            k = 2
+            j = j + 1
+            TotalVolume = 0
+
+        End If
+      
+
+    Next i
+   
+    '----------------------------------------------------------------------
+    'Part 2: Calculating MaxVolume, Max Increase and Minimum Decrease
+    '----------------------------------------------------------------------
+    
+    'Initial Variables
+    Dim MinDecrease As Double, MaxIncrease As Double, MaxVolume As Double
+   
+    'Add Titles for Results
+    ws.Range("P1") = "Ticker"
+    ws.Range("Q1") = "Value"
+    ws.Range("O2") = "Greatest % Increase"
+    ws.Range("O3") = "Greatest % Decrease"
+    ws.Range("O4") = "Greatest Total Volume"
+                     
+    'Determine Number of Tickers in summary List
+    LastRowTicker = Range("I" & Rows.Count).End(xlUp).Row
+    
+    'Set Particular Format for Percent Change
+    ws.Range("Q2:Q3").Style = "Percent"
+    ws.Range("Q2:Q3").NumberFormat = "0.00%"
+
+    'Calculate, Checking then Display Minimum Decrease value
+    MinDecrease = WorksheetFunction.Min(ws.Range("K:K"))
+    
+    'Checking Value of Decrease should be minus
+    If MinDecrease >= 0 Then
+        MinDecrease = 0
+    End If
+    ws.Range("Q3").Value = MinDecrease
+    
+    'Calculate, Checking then Display Maximum Increase value
+    MaxIncrease = WorksheetFunction.Max(ws.Range("K:K"))
+    
+    'Checking Value of Increase should be plus
+    If MaxIncrease <= 0 Then
+        MaxIncrease = 0
+    End If
+    ws.Range("Q2").Value = MaxIncrease
+        
+    'Calculate and Display Maximum Total Volume
+    MaxVolume = WorksheetFunction.Max(ws.Range("L:L"))
+    ws.Range("Q4").Value = MaxVolume
+   
+    'Determining which ticker has Maximum Increase and Minimum Decrease
+    For n = 2 To LastRowTicker
+        If ws.Range("K" & n).Value = MaxIncrease Then
+            ws.Range("P2").Value = ws.Range("I" & n)
+        ElseIf ws.Range("K" & n).Value = MinDecrease Then
+            ws.Range("P3").Value = ws.Range("I" & n)
+        End If
+    Next n
+   
+    'Determining which ticker has Maximum Total Volume
+    For m = 2 To LastRowTicker
+        If ws.Range("L" & m).Value = MaxVolume Then
+            ws.Range("P4").Value = ws.Range("I" & m)
+        End If
+    Next m
+
+ws.Columns("A:Q").AutoFit
+
+Next ws
+ 
+End Sub
