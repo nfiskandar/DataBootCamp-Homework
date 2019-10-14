@@ -2,9 +2,13 @@
 import os
 import csv
 
+#Use function found in google to count list
+#Source: https://www.geeksforgeeks.org/python-count-occurrences-element-list/
 def countX(lst, x): 
     return lst.count(x) 
-    
+
+#Modify function found in google to sort list based on an element
+#Source: https://www.geeksforgeeks.org/python-sort-list-according-second-element-sublist/
 def SortDescending(sub_li): 
     l = len(sub_li) 
     for i in range(0, l): 
