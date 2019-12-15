@@ -1,0 +1,43 @@
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#mainmenu {
+  background-color:white;
+}
+
+#LatButton{
+  background-color:#17a2b8;
+  color: white;
+}
+
+
+@media (max-width: 768px) {
+  #mainmenu {
+   background-color:#17a2b8;
+   color: white;
+  }
+  
+  #LatButton{
+    background-color:white;
+    color: #17a2b8;
+  }
+
+  #navbar9{
+    color:white;
+  }
+  
+  .nav-item{
+    color:white;
+  }
+
+}

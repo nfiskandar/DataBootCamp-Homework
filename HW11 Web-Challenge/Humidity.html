@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Humidity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body class = "body bg-light">
+
+    <nav class="navbar navbar-expand-md navbar-light" id="mainmenu">
+        <div class="container">
+            <a href="Latitude.html"><button type="button" class="btn btn-lg" id="LatButton"> Latitude </button></a>
+            <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbar9">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbar9">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Plot </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="Temperature.html" class="dropdown-item">Max Temperature</a>
+                            <a href="Humidity.html" class="dropdown-item">Humidity</a>
+                            <a href="Cloudiness.html" class="dropdown-item">Cloudiness</a>
+                            <a href="WindSpeed.html" class="dropdown-item">Wind Speed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Comparison.html">Comparison</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="DataForDisplay.html">Data</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container mx-auto py-auto">
+        <br>
+        <div class="row d-flex bg-white">
+            <div class="col-sm-12 col-md-8 col-lg-8">
+            </br>
+                <h3 class="text-info">Humidity Analysis</h3>
+                <hr>
+
+                <img class="img-fluid float-left" src="Resources/assets/images/Fig2.png" alt="Humidity">
+                
+                <p class = "text-center float-left">Humidity of most cities observed seem to be in range 60-100%. There are also a few cities with latitude bigger than 0 has 0 humidity.</p>
+            </div>
+
+            <div class="col-sm-12 col-md-1 col-lg-1 bg-light">
+            </div>
+
+            <div class="col-sm-12 col-md-3 col-lg-3">
+            </br>        
+                <h4 class="text-info">Visualizations</h4>
+                <hr>
+
+                <div class="row">
+                      <div class="col-3 col-sm-3 col-md-6 mb-2 text-center">
+                        <a href="Temperature.html" title="Max Temperature">
+                            <img class="img-thumbnail hoverable" src="Resources/assets/images/Fig1.png" alt="Max Temperature"></a>
+                      </div>
+                      <div class="col-3 col-sm-3 col-md-6 mb-2 text-center">
+                        <a href="#" title="You are in Humidity Page">
+                            <img class="img-thumbnail hoverable" src="Resources/assets/images/Fig2.png" alt="Humidity"></a>
+                      </div>
+                      <div class="col-3 col-sm-3 col-md-6 mb-1 text-center">
+                        <a href="Cloudiness.html" title="Cloudiness">
+                            <img class="img-thumbnail hoverable" src="Resources/assets/images/Fig3.png"  alt="Cloudiness"></a>
+                      </div>
+                      <div class="col-3 col-sm-3 col-md-6 mb-1 text-center">
+                        <a href="WindSpeed.html" title="Wind Speed">
+                            <img class="img-thumbnail hoverable" src="Resources/assets/images/Fig4.png" alt="Wind Speed"></a>
+                      </div>
+
+                      <div class="clearfix">
+                        <!-- clearfix all breakpoints -->
+                      </div>
+
+                  </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+
+</html>

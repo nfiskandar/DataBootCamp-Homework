@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Comparison</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body class = "body bg-light">
+    <nav class="navbar navbar-expand-md navbar-light" id="mainmenu">
+        <div class="container">
+            <a href="Latitude.html"><button type="button" class="btn btn-lg" id="LatButton"> Latitude </button></a>
+            <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbar9">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbar9">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown" id="dropmenu">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Plot </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="Temperature.html" class="dropdown-item">Max Temperature</a>
+                            <a href="Humidity.html" class="dropdown-item">Humidity</a>
+                            <a href="Cloudiness.html" class="dropdown-item">Cloudiness</a>
+                            <a href="WindSpeed.html" class="dropdown-item">Wind Speed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" title="You are in Comparison Page">Comparison</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="DataForDisplay.html">Data</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    </br>
+    <div class="container mx-auto py-auto bg-white">
+        
+    <div class="col-sm-12 col-md-12 col-lg-12">
+    </br>        
+        <h3 class="text-info">Comparison</h3>
+        <hr>
+
+        <h6>Click on each plot to get in-depth analysis.</h6>
+        </br>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6 mb-2 text-center">
+                <a href="Temperature.html" title="Max Temperature">
+                    <img class="img-fluid" src="Resources/assets/images/Fig1.png" alt="Max Temperature"></a>
+              </div>
+              <div class="col-sm-12 col-md-6 mb-2 text-center">
+                <a href="Humidity.html" title="Humidity">
+                    <img class="img-fluid" src="Resources/assets/images/Fig2.png" alt="Humidity"></a>
+              </div>
+              <div class="col-sm-12 col-md-6 mb-2 text-center">
+                <a href="Cloudiness.html" title="Cloudiness">
+                    <img class="img-fluid" src="Resources/assets/images/Fig3.png"  alt="Cloudiness"></a>
+              </div>
+              <div class="col-sm-12 col-md-6 mb-2 text-center">
+                <a href="WindSpeed.html" title="Wind Speed">
+                    <img class="img-fluid"" src="Resources/assets/images/Fig4.png" alt="Wind Speed"></a>
+              </div>
+
+              <div class="clearfix">
+                <!-- clearfix all breakpoints -->
+              </div>
+              </div>
+
+          </div>
+    </div>
+    </div>
+
+</body>
+
+
+</html>
