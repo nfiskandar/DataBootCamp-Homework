@@ -106,8 +106,8 @@ function makeResponsive() {
       // ==============================
       var toolTip = d3.tip()
                 .attr("class", "d3-tip")
-                .offset([radius*2, -radius])
-                .html(function(d) {return (`${d.abbr},${d.healthcare}`)
+                .offset([radius, radius*2])
+                .html(function(d) {return (`${d.state}<br>${d.healthcare}%`)
                 });
 
       // Step 8: Create tooltip in the chart
@@ -134,7 +134,7 @@ function makeResponsive() {
           .attr("dy", "1em")
           .attr("class", "aText")
           .classed("active", true)
-          .text("In Poverty (%)");
+          .text("In Poverty");
 
       chartGroup.append("text")
           .attr("transform", `translate(${(chartWidth/2)}, ${chartHeight + margin.top})`)
@@ -142,7 +142,7 @@ function makeResponsive() {
           .attr("y", 10)
           .attr("class", "aText")
           .classed("active", true)
-          .text("Lack of Healthcare (%)");
+          .text("Lack of Healthcare");
 
     }).catch(function(error) {
       console.log(error);
