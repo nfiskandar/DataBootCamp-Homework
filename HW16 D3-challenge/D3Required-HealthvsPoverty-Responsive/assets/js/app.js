@@ -55,11 +55,11 @@ function makeResponsive() {
       // Step 2: Create scale functions
       // ==============================
       var xLinearScale = d3.scaleLinear()
-        .domain([d3.min(stateData, d => d.poverty)-1, d3.max(stateData, d => d.poverty)+1])
+        .domain([d3.min(stateData, d => d.poverty)*0.9, d3.max(stateData, d => d.poverty)*1.1])
         .range([0, chartWidth]);
 
       var yLinearScale = d3.scaleLinear()
-        .domain([d3.min(stateData, d => d.healthcare)-2, d3.max(stateData, d => d.healthcare)+2])
+        .domain([d3.min(stateData, d => d.healthcare)*0.8, d3.max(stateData, d => d.healthcare)*1.2])
         .range([chartHeight, 0]);
 
       // Step 3: Create axis functions
@@ -134,7 +134,7 @@ function makeResponsive() {
           .attr("dy", "1em")
           .attr("class", "aText")
           .classed("active", true)
-          .text("In Poverty");
+          .text("Lack of Healthcare (%)");
 
       chartGroup.append("text")
           .attr("transform", `translate(${(chartWidth/2)}, ${chartHeight + margin.top})`)
@@ -142,7 +142,7 @@ function makeResponsive() {
           .attr("y", 10)
           .attr("class", "aText")
           .classed("active", true)
-          .text("Lack of Healthcare");
+          .text("In Poverty (%)");
 
     }).catch(function(error) {
       console.log(error);
