@@ -195,7 +195,7 @@ function setInactive(Label) {
     console.log("y axis")
     
   // append initial circles
-  var radius = 15;
+  var radius = 12;
   var circlesGroup = chartGroup.selectAll("circle")
     .data(stateData)
     .enter()

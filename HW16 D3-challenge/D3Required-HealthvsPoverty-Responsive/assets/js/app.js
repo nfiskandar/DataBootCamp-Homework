@@ -78,7 +78,7 @@ function makeResponsive() {
 
       // Step 5: Create Circles
       // ==============================
-      var radius = 15;
+      var radius = 12;
       var circlesGroup = chartGroup.append("g")
                 .selectAll("circle")
                 .data(stateData)
